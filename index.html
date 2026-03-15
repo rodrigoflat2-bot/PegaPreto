@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flora Belle - Floricultura Online</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-seedling"></i>
+                <span>Flora Belle</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">Início</a></li>
+                <li><a href="#produtos" class="nav-link">Produtos</a></li>
+                <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                <li><a href="contato.html" class="nav-link">Contato</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Belezas Florais<br>Entregas em Todo Lugar</h1>
+            <p>Arrase em Presentear com nossos arranjos exclusivos feitos com amor e as mais belas flores frescas</p>
+            <a href="#produtos" class="btn-primary">Ver Catálogo</a>
+        </div>
+        <div class="hero-visual">
+            <div class="flower-float flower-1"><i class="fas fa-spa"></i></div>
+            <div class="flower-float flower-2"><i class="fas fa-leaf"></i></div>
+            <div class="flower-float flower-3"><i class="fas fa-seedling"></i></div>
+        </div>
+    </section>
+
+    <section id="produtos" class="products">
+        <div class="section-header">
+            <h2>Nossos Arranjos</h2>
+            <p>Escolha o presente perfeito para toute e cada ocasião</p>
+        </div>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-spa"></i>
+                    <span class="badge">Mais Vendidos</span>
+                </div>
+                <div class="product-info">
+                    <h3>Buquê Primavera</h3>
+                    <p>Mistura de tulipas, girassóis e Rosas</p>
+                    <div class="price">R$ 189,90</div>
+                    <button class="btn-cart" onclick="addToCart('Buquê Primavera', 189.90)">
+                        <i class="fas fa-shopping-cart"></i> Adicionar
+                    </button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-seedling"></i>
+                    <span class="badge">Novo</span>
+                </div>
+                <div class="product-info">
+                    <h3>Arrangement Exclusive</h3>
+                    <p>Rosas vermelhas com lírios brancos</p>
+                    <div class="price">R$ 249,90</div>
+                    <button class="btn-cart" onclick="addToCart('Arrangement Exclusive', 249.90)">
+                        <i class="fas fa-shopping-cart"></i> Adicionar
+                    </button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <div class="product-info">
+                    <h3>Kit Presente</h3>
+                    <p>Orquídea + vaso cerâmico + chocolates</p>
+                    <div class="price">R$ 299,90</div>
+                    <button class="btn-cart" onclick="addToCart('Kit Presente', 299.90)">
+                        <i class="fas fa-shopping-cart"></i> Adicionar
+                    </button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-spa"></i>
+                </div>
+                <div class="product-info">
+                    <h3>Buquê Romântico</h3>
+                    <p>12 rosas vermelhas Premium</p>
+                    <div class="price">R$ 159,90</div>
+                    <button class="btn-cart" onclick="addToCart('Buquê Romântico', 159.90)">
+                        <i class="fas fa-shopping-cart"></i> Adicionar
+                    </button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-seedling"></i>
+                    <span class="badge">Promoção</span>
+                </div>
+                <div class="product-info">
+                    <h3>Mini Jardim</h3>
+                    <p>Samambaias e plantas verdes</p>
+                    <div class="price"><span class="old-price">R$ 129,90</span> R$ 89,90</div>
+                    <button class="btn-cart" onclick="addToCart('Mini Jardim', 89.90)">
+                        <i class="fas fa-shopping-cart"></i> Adicionar
+                    </button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <div class="product-info">
+                    <h3>Girassóis Clássicos</h3>
+                    <p>6 girassóis com foliage</p>
+                    <div class="price">R$ 139,90</div>
+                    <button class="btn-cart" onclick="addToCart('Girassóis Clássicos', 139.90)">
+                        <i class="fas fa-shopping-cart"></i> Adicionar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="about">
+        <div class="about-content">
+            <h2>Sobre a Flora Belle</h2>
+            <p>Há mais de 10 anos levando alegria através das mais belas flores. Nossa missão é transformar momentos especiais em memórias inesquecíveis com arranjos exclusivos feitos à mão por nossos floristas profissionais.</p>
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-truck"></i>
+                    <span>Entrega Rápida</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-heart"></i>
+                    <span>Feito com Amor</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-award"></i>
+                    <span>Qualidade Premium</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="cart-float" onclick="toggleCart()">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">0</span>
+    </div>
+
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3>Seu Carrinho</h3>
+            <button class="close-cart" onclick="toggleCart()">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="empty-cart">Seu carrinho está vazio</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">Total: R$ <span id="cartTotal">0,00</span></div>
+            <button class="btn-checkout" onclick="checkout()">
+                <i class="fas fa-credit-card"></i> Ir para Pagamento
+            </button>
+        </div>
+    </div>
+
+    <a href="https://wa.me/5511999999999" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Flora Belle</h4>
+                <p>Sua floricultura online de confiança</p>
+            </div>
+            <div class="footer-section">
+                <h4>Links Rápidos</h4>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="#produtos">Produtos</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contato</h4>
+                <p><i class="fas fa-phone"></i> (11) 99999-9999</p>
+                <p><i class="fas fa-envelope"></i> contato@florabelle.com.br</p>
+                <p><i class="fas fa-map-marker-alt"></i> São Paulo, SP</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Flora Belle. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
