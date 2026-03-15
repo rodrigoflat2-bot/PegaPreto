@@ -134,8 +134,97 @@ function populateOrderSummary() {
 function copyPixKey() {
     const pixKey = '51166889840';
     navigator.clipboard.writeText(pixKey).then(() => {
-        alert('Chave PIX copiada com sucesso!');
+        const btn = document.querySelector('.copy-pix-btn');
+        btn.innerHTML = '<i class="fas fa-check"></i> Copiado!';
+        setTimeout(() => {
+            btn.innerHTML = '<i class="fas fa-copy"></i> Copiar Chave';
+        }, 2000);
     });
+}
+
+function showPixPopup() {
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    
+    const overlay = document.createElement('div');
+    overlay.className = 'pix-popup-overlay';
+    overlay.id = 'pixPopup';
+    overlay.innerHTML = `
+        <div class="pix-popup">
+            <div class="pix-popup-header">
+                <i class="fas fa-qrcode"></i>
+                <h2>Pagamento via PIX</h2>
+            </div>
+            
+            <div class="pix-popup-amount">
+                <span>Valor Total:</span>
+                <strong>R$ ${total.toFixed(2).replace('.', ',')}</strong>
+            </div>
+            
+            <div class="pix-popup-key">
+                <span>Copie esta chave PIX:</span>
+                <div class="key-display">
+                    <strong>51166889840</strong>
+                    <button class="copy-pix-btn" onclick="copyPixKey()">
+                        <i class="fas fa-copy"></i> Copiar Chave
+                    </button>
+                </div>
+            </div>
+            
+            <div class="pix-popup-instructions">
+                <h4>Como pagar:</h4>
+                <ol>
+                    <li>Abra o app do seu banco</li>
+                    <li>Escolha "PIX" e "Transferir"</li>
+                    <li>Cole a chave PIX copiada acima</li>
+                    <li>Confirme o valor de <strong>R$ ${total.toFixed(2).replace('.', ',')}</strong></li>
+                    <li>Efetue o pagamento</li>
+                </ol>
+            </div>
+            
+            <div class="pix-popup-actions">
+                <button class="btn-paid" onclick="confirmPixPayment()">
+                    <i class="fas fa-check-circle"></i> Já Paguei
+                </button>
+                <button class="btn-cancel" onclick="cancelOrder()">
+                    <i class="fas fa-times"></i> Cancelar Pedido
+                </button>
+            </div>
+            
+            <p class="pix-popup-note">
+                <i class="fas fa-info-circle"></i>
+                Após o pagamento, você será redirecionado para confirmar seu pedido
+            </p>
+        </div>
+    `;
+    
+    document.body.appendChild(overlay);
+    
+    setTimeout(() => {
+        overlay.classList.add('active');
+    }, 100);
+}
+
+function copyPixKey() {
+    navigator.clipboard.writeText('51166889840').then(() => {
+        const btn = document.querySelector('.copy-pix-btn');
+        btn.innerHTML = '<i class="fas fa-check"></i> Copiado!';
+        setTimeout(() => {
+            btn.innerHTML = '<i class="fas fa-copy"></i> Copiar Chave';
+        }, 2000);
+    });
+}
+
+function confirmPixPayment() {
+    completeOrder();
+    document.getElementById('pixPopup').remove();
+}
+
+function cancelOrder() {
+    if (confirm('Tem certeza que deseja cancelar o pedido?')) {
+        document.getElementById('pixPopup').remove();
+        localStorage.removeItem('florabelle_cart');
+        window.location.href = 'index.html';
+    }
 }
 
 function completeOrder() {
@@ -218,43 +307,7 @@ function completeOrder() {
     
     localStorage.setItem('florabelle_last_order', JSON.stringify(orderData));
     
-    let message = `*🌸 NOVO PEDIDO - Flora Belle*\n\n`;
-    message += `*📋 PEDIDO #${orderData.id}*\n`;
-    message += `Data: ${orderData.data}\n\n`;
-    message += `*👤 CLIENTE*\n`;
-    message += `Nome: ${nome}\n`;
-    message += `Email: ${email}\n`;
-    message += `Telefone: ${telefone}\n`;
-    if (senha) message += `Senha: Cadastrada\n`;
-    message += `\n*📍 ENDEREÇO*\n`;
-    message += `${endereco}, ${numero}${complemento ? ', ' + complemento : ''}\n`;
-    message += `${bairro} - ${cidade}/${uf}\n`;
-    message += `CEP: ${cep}\n`;
-    message += `\n*🚚 ENTREGA*\n`;
-    message += `Previsão: ${deliveryDate}\n`;
-    message += `\n*🛒 ITENS*\n`;
+    localStorage.removeItem('florabelle_cart');
     
-    cart.forEach(item => {
-        const subtotal = item.price * item.quantity;
-        message += `• ${item.name}\n  ${item.quantity}x R$ ${item.price.toFixed(2).replace('.', ',')} = R$ ${subtotal.toFixed(2).replace('.', ',')}\n`;
-    });
-    
-    message += `\n*💰 TOTAL: R$ ${total.toFixed(2).replace('.', ',')}*\n`;
-    message += `\n*💳 PAGAMENTO: PIX*\n`;
-    message += `Chave: 51166889840\n`;
-    message += `Status: ${orderData.pagamento.status}`;
-    
-    const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(message)}`;
-    
-    const confirmPayment = confirm(`Pedido registrado com sucesso!\n\nTotal: R$ ${total.toFixed(2).replace('.', ',')}\n\nAgora você será direcionado para o WhatsApp para confirmar o pagamento. Clique em OK para continuar.`);
-    
-    if (confirmPayment) {
-        localStorage.removeItem('florabelle_cart');
-        window.open(whatsappUrl, '_blank');
-        
-        setTimeout(() => {
-            alert('Obrigado pelo seu pedido! Em breve enviaremos o confirmation email para ' + email);
-            window.location.href = 'index.html';
-        }, 500);
-    }
+    window.location.href = 'obrigado.html';
 }
