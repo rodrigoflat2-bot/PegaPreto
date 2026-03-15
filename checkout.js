@@ -132,7 +132,7 @@ function populateOrderSummary() {
 }
 
 function copyPixKey() {
-    const pixKey = '51166889840';
+    const pixKey = '123456789';
     navigator.clipboard.writeText(pixKey).then(() => {
         const btn = document.querySelector('.copy-pix-btn');
         btn.innerHTML = '<i class="fas fa-check"></i> Copiado!';
@@ -163,7 +163,7 @@ function showPixPopup() {
             <div class="pix-popup-key">
                 <span>Copie esta chave PIX:</span>
                 <div class="key-display">
-                    <strong>51166889840</strong>
+                    <strong>123456789</strong>
                     <button class="copy-pix-btn" onclick="copyPixKey()">
                         <i class="fas fa-copy"></i> Copiar Chave
                     </button>
@@ -205,7 +205,7 @@ function showPixPopup() {
 }
 
 function copyPixKey() {
-    navigator.clipboard.writeText('51166889840').then(() => {
+    navigator.clipboard.writeText('123456789').then(() => {
         const btn = document.querySelector('.copy-pix-btn');
         btn.innerHTML = '<i class="fas fa-check"></i> Copiado!';
         setTimeout(() => {
@@ -300,7 +300,7 @@ function completeOrder() {
         total,
         pagamento: {
             metodo: 'PIX',
-            chave: '51166889840',
+            chave: '123456789',
             status: 'Pendente'
         }
     };

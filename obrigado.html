@@ -93,7 +93,7 @@
                 <div class="pix-key-box">
                     <span>Chave PIX (CPF):</span>
                     <div class="key-copy">
-                        <strong>51166889840</strong>
+                        <strong>123456789</strong>
                         <button onclick="copyPixKey()"><i class="fas fa-copy"></i> Copiar</button>
                     </div>
                 </div>
@@ -111,7 +111,7 @@
                         <div class="step-number">1</div>
                         <div class="step-text">
                             <h4>Efetue o Pagamento</h4>
-                            <p>Use a chave PIX 51166889840</p>
+                            <p>Use a chave PIX 123456789</p>
                         </div>
                     </div>
                     <div class="step">
@@ -180,7 +180,7 @@
         }
         
         function copyPixKey() {
-            navigator.clipboard.writeText('51166889840').then(() => {
+            navigator.clipboard.writeText('123456789').then(() => {
                 const btn = document.querySelector('.key-copy button');
                 btn.innerHTML = '<i class="fas fa-check"></i> Copiado!';
                 setTimeout(() => {
@@ -205,7 +205,7 @@
             });
             
             message += `\n*💰 Total: R$ ${orderData.total.toFixed(2).replace('.', ',')}*\n`;
-            message += `*💳 Pagamento: PIX (51166889840)*\n\n`;
+            message += `*💳 Pagamento: PIX (123456789)*\n\n`;
             message += `*📝 Comprovante em anexo*`;
             
             const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(message)}`;

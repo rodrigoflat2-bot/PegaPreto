@@ -1,4 +1,4 @@
-const PIX_KEY = '51166889840';
+const PIX_KEY = '123456789';
 
 document.addEventListener('DOMContentLoaded', function() {
     loadCart();
